@@ -1,0 +1,9 @@
+package interfaces;
+
+import observer.Observable;
+
+public interface IObserver {
+   
+    void update();
+
+}
