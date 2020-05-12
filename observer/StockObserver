@@ -1,0 +1,22 @@
+package observer;
+
+import interfaces.IObserver;
+
+public class StockObserver implements IObserver{
+	private static int ObserverIDTrack = 0;
+	private int ObserverID;
+	private Observable observable;
+	
+	public StockObserver(Observable observable) {
+		this.observable = observable;
+		this.ObserverID = ++ObserverIDTrack;
+		
+		observable.registerObserver(this);
+	}
+	@Override
+	public void update() {
+		// TODO Auto-generated method stub
+		
+	}
+
+}
