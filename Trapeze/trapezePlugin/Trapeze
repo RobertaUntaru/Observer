@@ -1,0 +1,53 @@
+package trapezePlugin;
+import java.util.Scanner;
+
+import interfaces.IObserver;
+import interfaces.IPluginsAppPlugin;
+import interfaces.IShape;
+
+import observer.Observable;
+
+public class Trapeze extends Observable implements IShape {
+
+	private int base1;
+	private int base2;
+	private int height;
+ @Override
+    public void read() {
+    	Scanner scan = new Scanner (System.in);
+        System.out.println("Enter base 1 :");
+        base1 = scan.nextInt();
+        System.out.println("Enter base 2 :");
+        base2 = scan.nextInt();
+        System.out.println("Enter height:");
+        height = scan.nextInt();
+    }
+    public int getBase1()
+    {
+        return base1;
+    }
+    public int getBase2()
+    {
+        return base2;
+    }
+    public int getHeight()
+    {
+        return height;
+    }
+    public float Area()
+    {
+        return ((base1+base2)*height)/2;
+    }
+	
+    @Override
+    public void draw() {
+        System.out.println("This is a trapeze with base: " + base1 + " and base: " + base2 );
+        System.out.println("Area:" + Area());
+    }
+    @Override
+    public void registerObserver(IObserver observer)
+    {
+    	
+    }
+    
+}
