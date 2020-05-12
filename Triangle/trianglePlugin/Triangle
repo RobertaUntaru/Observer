@@ -1,0 +1,41 @@
+package trianglePlugin;
+import java.util.Scanner;
+import observer.Observable;
+import interfaces.IObserver;
+import interfaces.IPluginsAppPlugin;
+import interfaces.IShape;
+public class Triangle extends Observable implements IShape {
+	  private int base;
+	  private int height;
+	  public void read() {
+	    	Scanner scan = new Scanner (System.in);
+	        System.out.println("Enter base:");
+	        base = scan.nextInt();
+	        System.out.println("Enter height:");
+	        height = scan.nextInt();
+	    }
+	    public int getBase()
+	    {
+	        return base;
+	    }
+	    public int getHeight()
+	    {
+	        return height;
+	    }
+	    public float Area()
+	    {
+	        return (height * base)/2;
+	    }
+		
+	    @Override
+	    public void draw() {
+	        System.out.println("This is a triangle with base: " + base + " and height: " + height);
+	        System.out.println(".Area" + Area());
+	    }
+	    @Override
+	    public void registerObserver(IObserver observer)
+	    {
+	    	
+	    }
+    
+}
