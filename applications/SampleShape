@@ -1,0 +1,86 @@
+package applications;
+import java.util.ArrayList;
+import observer.Observable;
+
+import interfaces.IObserver;
+import interfaces.IShape;
+
+public class SampleShape extends Observable implements IShape, IObserver {
+
+    private ArrayList <IShape> shapeList = new ArrayList<IShape>();
+    protected ArrayList<IObserver> observers = new ArrayList<IObserver>();
+    private int height = 10;
+    private int width = 10;
+    private float sum = 0;
+    @Override
+    public void draw() {
+    	int nr = 0;
+        if(shapeList.isEmpty()) {
+            System.out.println("Board is empty");
+        }
+        else
+        {
+        	System.out.println("----------------------");
+        	System.out.println("Board contents: ");
+            for(IShape shape:shapeList)
+            {
+            	System.out.print(++nr + ". ");
+                shape.draw();
+            }
+            System.out.println("Total area: " + sum + " from " + getboardArea() + " avalible. ");
+            System.out.println("----------------------");
+        }
+
+    }
+
+    @Override
+    public void read() {
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+    
+    public int getboardArea()
+    {
+        return height * width;
+    }
+    public void addObserver(IObserver observer) {
+    	observers.add(observer);
+    }
+    public void add(IShape shape)
+    {
+        if(getboardArea() > shape.Area())
+        {
+            shapeList.add(shape);
+            sum = sum + shape.Area();           
+            System.out.println("Current area: " + shape.Area());
+            System.out.println("Avalible area: " + sum);
+            System.out.println("Board area: " + getboardArea());
+        }
+        else
+        {       
+        	update();
+            shapeList.add(shape);
+            sum = sum + shape.Area(); 
+            System.out.println("Current area: " + shape.Area());
+            System.out.println("Avalible area: " + sum);
+            System.out.println("Board area: " + getboardArea());
+        }
+    }
+
+
+    @Override
+    public void update() {
+        this.height = 10 * this.height;
+        this.width = 10 * this.width;
+    }
+
+
+    @Override
+    public float Area() {
+        return 0;
+    }
+
+
+
+
+}
+
