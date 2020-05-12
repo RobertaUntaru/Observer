@@ -1,0 +1,42 @@
+package circlePlugin;
+
+import observer.Observable;
+import java.util.Scanner;
+import interfaces.IObservable;
+import interfaces.IObserver;
+import interfaces.IPluginsAppPlugin;
+import interfaces.IShape;
+
+public class Circle extends Observable implements IShape {
+	private int radius;
+   
+    @Override
+    public void read() {
+       Scanner scan = new Scanner (System.in);
+       System.out.println("Enter radius:");
+       radius = scan.nextInt();
+    }
+    
+    public int getRadius()
+    {
+        return radius;
+    }
+    
+    public float Area()
+    {
+        return (float) (3.14 * radius *radius);
+    }
+  
+    @Override
+    public void draw() {
+        System.out.println("This is a circle with radius: " + radius);
+        System.out.println("Area: " + Area());
+    }
+    
+    @Override
+    public void registerObserver(IObserver observer)
+    {
+    	
+    }
+	
+}
