@@ -1,0 +1,44 @@
+package rectanglePlugin;
+import java.util.Scanner;
+
+import interfaces.IObserver;
+import interfaces.IPluginsAppPlugin;
+import interfaces.IShape;
+import observer.Observable;
+
+public class Rectangle extends Observable implements IShape {
+	private int length;
+	private int width;
+	@Override
+    public void read() {
+    	Scanner scan = new Scanner (System.in);
+        System.out.println("Enter length:");
+        length = scan.nextInt();
+        System.out.println("Enter width:");
+        width = scan.nextInt();
+    }
+    public int getLength()
+    {
+        return length;
+    }
+    public int getWidth()
+    {
+        return width;
+    }
+    public float Area()
+    {
+        return length * width;
+    }
+	
+    @Override
+    public void draw() {
+        System.out.println("This is a rectangle with length: " + length + " and width: " + width);
+        System.out.println("Area" + Area());
+    }
+    @Override
+    public void registerObserver(IObserver observer)
+    {
+    	
+    }
+    
+}
