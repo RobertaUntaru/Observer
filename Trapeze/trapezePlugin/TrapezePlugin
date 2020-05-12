@@ -1,0 +1,21 @@
+package trapezePlugin;
+import interfaces.IPluginsAppPlugin;
+import interfaces.IShape;
+public class TrapezePlugin implements IPluginsAppPlugin {
+
+    @Override
+    public String getUniqueNameText() {
+        return "TrapezePlugin";
+    }
+
+    @Override
+    public String getDisplayText() {
+        return "Trapeze";
+    }
+
+    @Override
+    public IShape getShape() {
+        return new Trapeze();
+    }
+    
+}
