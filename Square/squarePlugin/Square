@@ -1,0 +1,39 @@
+package squarePlugin;
+import java.util.Scanner;
+
+import interfaces.IObserver;
+import interfaces.IPluginsAppPlugin;
+import interfaces.IShape;
+import observer.Observable;
+
+public class Square extends Observable implements IShape {
+	private int width;
+  
+
+    @Override
+    public void read() {
+    	Scanner scan = new Scanner (System.in);
+        System.out.println("Enter width:");
+        width = scan.nextInt();
+    }
+    public int getWidth()
+    {
+        return width;
+    }
+    public float Area()
+    {
+        return width*width;
+    }
+	
+    @Override
+    public void draw() {
+    	System.out.println("This is a square with width: " + width);
+    	System.out.println("Area: " + Area());
+    }
+    @Override
+    public void registerObserver(IObserver observer)
+    {
+    	
+    }
+    
+}
