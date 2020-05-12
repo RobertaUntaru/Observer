@@ -1,0 +1,41 @@
+package applications;
+import interfaces.IObservable;
+import interfaces.IObserver;
+import java.util.ArrayList;
+import interfaces.IShape;
+import java.util.*;
+
+
+public class Main{
+	   
+	static SampleShape board = new SampleShape();
+	
+	public static void main(String[] args) {
+		System.out.println("Draw Shapes");
+		Menu mainMenu = initializeMenu();
+		mainMenu.execute();
+	}
+	
+	private static Menu initializeMenu()
+	{
+		ArrayList<IMenuItem> mainMenuItems = new ArrayList<IMenuItem>();
+		mainMenuItems.add(new MenuItem("Add",1,(parameters)-> {
+			PluginManager pluginMan = new PluginManager();
+			ApplicationMenu menu = new ApplicationMenu(pluginMan);
+			menu.load(board);
+			menu.execute();
+			
+		}));
+		
+		mainMenuItems.add(new MenuItem("Delete",2,null));
+		mainMenuItems.add(new MenuItem("Modify",3,null));
+		mainMenuItems.add(new MenuItem("View Board",4,(parameters)-> 
+		{
+			board.draw();
+			
+		}));
+	
+	return new Menu("Main Menu",0,mainMenuItems);
+	}
+
+}
